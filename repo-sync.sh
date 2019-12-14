@@ -1,9 +1,14 @@
 #!/usr/bin/env bash
 
-set -e -u -o pipefail
+set -e -u -o pipefail -o xtrace
 
 export ORIGIN="${1}"
 export FORK="${2}"
+
+shift
+shift
+
+BRANCHES=($@)
 
 dir=$(mktemp -d)
 
@@ -14,7 +19,7 @@ dir=$(mktemp -d)
 	git remote add origin "${ORIGIN}"
 	git remote add fork "${FORK}"
 
-	BRANCHES=($(git ls-remote --heads origin | awk '{ print $2 }' | awk -F'/' '{ print $3 }'))
+	: ${BRANCHES:=($(git ls-remote --heads origin | awk '{ print $2 }' | awk -F'/' '{ print $3 }'))}
 
 	BRANCHES_LOCAL=()
 	for b in ${BRANCHES[@]}; do
