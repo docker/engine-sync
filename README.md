@@ -29,5 +29,8 @@ You can also set specific branches to mirror:
 ```
 $ origin=https://github.com/moby/moby.git
 $ mirror=https://github.com/docker/engine.git
-$ ./repo-sync $origin $mirror 17.03 17.05
+$ ./repo-sync $origin $mirror 17.03.x 17.05.x
 ```
+
+Note that currently this mirrors all tags unconditionally, regardless if you
+specified branches.
