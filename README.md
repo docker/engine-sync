@@ -1,6 +1,6 @@
 ## engine-sync
 
-This repo serves only to hold tooling neccessary to sync moby/moby to docker/engine.
+This repo serves only to hold tooling necessary to sync moby/moby to docker/engine.
 
 Some background:
 
